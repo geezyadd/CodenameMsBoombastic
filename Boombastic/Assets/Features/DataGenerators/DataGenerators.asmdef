@@ -1,0 +1,19 @@
+{
+    "name": "DataGenerators",
+    "rootNamespace": "",
+    "references": [
+        "GUID:296bef61208702a418126ad2828071dc",
+        "GUID:69448af7b92c7f342b298e06a37122aa"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
