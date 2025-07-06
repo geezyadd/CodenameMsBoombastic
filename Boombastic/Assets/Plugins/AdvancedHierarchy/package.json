@@ -1,0 +1,18 @@
+{
+  "name": "com.heavensforge.advanced-hierarchy",
+  "version": "1.0.0",
+  "displayName": "Advanced Hierarchy",
+  "description": "Component icons and folder for Unity Hierarchy",
+  "unity": "6000.0",
+  "unityRelease": "25f1",
+  "dependencies": {
+    "com.unity.settings-manager": "2.0.1"
+ },
+ "keywords": [
+    "Advanced",
+    "Hierarchy"
+  ],
+  "author": {
+    "name": "Heaven's Forge",
+  }
+}
