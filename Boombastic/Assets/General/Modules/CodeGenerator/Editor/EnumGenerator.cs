@@ -25,7 +25,7 @@ namespace CodeGenerator {
 
         private int GetIndex(int elementIndex) {
             if (Indexes == null || Indexes != null && elementIndex >= Indexes.Count)
-                return elementIndex + StartIndex + elementIndex * Increment;
+                return StartIndex + elementIndex * Increment;
 
             return Indexes[elementIndex];
         }
