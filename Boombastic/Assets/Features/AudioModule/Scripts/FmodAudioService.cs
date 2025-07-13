@@ -1,27 +1,34 @@
 using System;
 using System.Collections.Generic;
+using Features.CoroutineRunnerModule.Scripts;
 using FMODUnity;
-using RSG.Muffin.AudioServiceModule.Core;
 using UnityEngine;
 
 namespace Features.AudioModule.Scripts {
     public class FmodAudioService : IFmodAudioService {
-        private readonly Dictionary<EventReference, ISoundEventInstanceEntity> _fmodEventInstanceEntities = new();
+        private readonly Dictionary<AudioId, ISoundEventInstanceEntity> _fmodEventInstanceEntities = new();
         private readonly ICoroutineRunner _coroutineRunner;
+        private readonly AudioEventReferenceConfiguration _audioEventReferenceConfiguration;
         public event Action<EventReference> OnPlaySound;
 
-        public FmodAudioService(ICoroutineRunner coroutineRunner) =>
+        public FmodAudioService(ICoroutineRunner coroutineRunner, AudioEventReferenceConfiguration audioEventReferenceConfiguration) {
             _coroutineRunner = coroutineRunner;
-
-        public void PlayAudioOneShot(EventReference audioType) {
-            if(audioType.IsNull)
-                return;
-            
-            RuntimeManager.PlayOneShot(audioType);
-            OnPlaySound?.Invoke(audioType);
+            _audioEventReferenceConfiguration = audioEventReferenceConfiguration;
         }
 
-        public void PlayAudioOneShot(EventReference eventReference, Vector3 position) {
+        public void PlayAudioOneShot(AudioId audioType)
+        {
+            EventReference eventReference = _audioEventReferenceConfiguration.GetEventReference(audioType);
+            if(eventReference.IsNull)
+                return;
+            
+            RuntimeManager.PlayOneShot(eventReference);
+            OnPlaySound?.Invoke(eventReference);
+        }
+
+        public void PlayAudioOneShot(AudioId audioType, Vector3 position)
+        {
+            EventReference eventReference = _audioEventReferenceConfiguration.GetEventReference(audioType);
            if(eventReference.IsNull)
                return;
 
@@ -29,22 +36,23 @@ namespace Features.AudioModule.Scripts {
            OnPlaySound?.Invoke(eventReference);
         }
         
-        public ISoundEventInstanceEntity GetFmodEventInstanceEntity(EventReference audioID) {
-            if (audioID.IsNull)
+        public ISoundEventInstanceEntity GetFmodEventInstanceEntity(AudioId audioType) {
+            EventReference eventReference = _audioEventReferenceConfiguration.GetEventReference(audioType);
+            if (eventReference.IsNull)
                 return new SoundEventInstanceEntity();
             
-            RemoveFmodEventInstanceEntity(audioID);
-            ISoundEventInstanceEntity soundEventInstanceEntity = new SoundEventInstanceEntity(audioID, _coroutineRunner);
-            _fmodEventInstanceEntities.Add(audioID, soundEventInstanceEntity);
+            RemoveFmodEventInstanceEntity(audioType);
+            ISoundEventInstanceEntity soundEventInstanceEntity = new SoundEventInstanceEntity(eventReference, _coroutineRunner);
+            _fmodEventInstanceEntities.Add(audioType, soundEventInstanceEntity);
             return soundEventInstanceEntity;
         }
         
-        public void RemoveFmodEventInstanceEntity(EventReference audioID) {
-            if(_fmodEventInstanceEntities.ContainsKey(audioID) is false)
+        public void RemoveFmodEventInstanceEntity(AudioId audioType) {
+            if(_fmodEventInstanceEntities.ContainsKey(audioType) is false)
                 return;
             
-            _fmodEventInstanceEntities[audioID].ReleaseEventInstance();
-            _fmodEventInstanceEntities.Remove(audioID);
+            _fmodEventInstanceEntities[audioType].ReleaseEventInstance();
+            _fmodEventInstanceEntities.Remove(audioType);
         }
     }
 }

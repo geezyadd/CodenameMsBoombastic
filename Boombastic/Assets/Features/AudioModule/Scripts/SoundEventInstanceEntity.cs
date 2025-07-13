@@ -1,11 +1,11 @@
 using System.Collections;
+using Features.CoroutineRunnerModule.Scripts;
 using FMOD.Studio;
 using FMODUnity;
-using RSG.Muffin.BootstrapModule.Common;
 using UnityEngine;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
-namespace RSG.Muffin.AudioServiceModule.Core {
+namespace Features.AudioModule.Scripts {
     public class SoundEventInstanceEntity : ISoundEventInstanceEntity {
         private const string INTENSITY_PARAMETER_NAME = "Intensity";
         private readonly EventReference _audioID;

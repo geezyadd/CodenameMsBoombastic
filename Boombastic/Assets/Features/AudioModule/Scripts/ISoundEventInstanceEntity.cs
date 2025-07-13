@@ -2,7 +2,7 @@ using FMODUnity;
 using UnityEngine;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
-namespace RSG.Muffin.AudioServiceModule.Core {
+namespace Features.AudioModule.Scripts {
     public interface ISoundEventInstanceEntity {
         public EventReference AudioID { get; }
         public void PlaySound();
