@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dea69d41f90c6ea4fa55c27c1d60c145, type: 3}
-  m_Name: AddressableAssetGroupSortSettings
+  m_Script: {fileID: 11500000, guid: 2f376e897c2d4413b26d6f0adccb380f, type: 3}
+  m_Name: AudioEventReferenceConfiguration_Default
   m_EditorClassIdentifier: 
-  sortOrder:
-  - 0467890642831c64cb69acefbee3a9c6
-  - e3842a57abbe2994eb047321858ea1b3
-  - c0164bafa46fad4498fc6f1b5d4b1711
+  <AudioHolders>k__BackingField: []
