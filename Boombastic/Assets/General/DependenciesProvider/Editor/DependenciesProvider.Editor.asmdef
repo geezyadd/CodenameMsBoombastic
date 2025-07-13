@@ -1,0 +1,18 @@
+{
+    "name": "DependenciesProvider.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:58c7e653ee5b3a542b30c76b561a5f37"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

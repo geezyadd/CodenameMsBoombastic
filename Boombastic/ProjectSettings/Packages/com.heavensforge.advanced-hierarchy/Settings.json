@@ -22,6 +22,11 @@
                 "value": "{\"m_Value\":true}"
             },
             {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "_stripFoldersFromPrefabsInPlayMode",
+                "value": "{\"m_Value\":false}"
+            },
+            {
                 "type": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "_maxComponents",
                 "value": "{\"m_Value\":3}"
@@ -30,6 +35,11 @@
                 "type": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "_iconsSize",
                 "value": "{\"m_Value\":16}"
+            },
+            {
+                "type": "AdvancedHierarchy.StrippingMode, AdvancedHierarchy, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "_playModeSetting",
+                "value": "{\"m_Value\":2}"
             }
         ]
     }
