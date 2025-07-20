@@ -11,12 +11,13 @@ namespace UIWorkflow.Nodes {
     public class HideWindowUnit : Unit {
         [DoNotSerialize] public ValueInput Window;
         [DoNotSerialize] public ValueInput Close;
+        [DoNotSerialize] public ControlInput Enter;
         [DoNotSerialize] public ControlOutput Exit;
         
         protected override void Definition() {
             Window = ValueInput<WindowNames>("Window", default);
             Close = ValueInput<bool>("Close?", default);
-            ControlInput("In", flow => {
+            Enter = ControlInput("In", flow => {
                 string windowName = flow.GetValue<WindowNames>(Window).ToString();
                 bool toClose = flow.GetValue<bool>(Close);
                 WindowBehaviour windowBehaviour = (WindowBehaviour)ZenjectDependenciesProvider.Get(WindowsTypeMapper.GetType(windowName));
@@ -29,6 +30,7 @@ namespace UIWorkflow.Nodes {
             });
 
             Exit = ControlOutput("Out");
+            Succession(Enter, Exit);
         }
     }
 }

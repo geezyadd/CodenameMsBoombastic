@@ -10,11 +10,12 @@ namespace UIWorkflow.Nodes {
     [UnitCategory("UI Workflow")]
     public class ShowWindowUnit : Unit {
         [DoNotSerialize] public ValueInput Window;
+        [DoNotSerialize] public ControlInput Enter;
         [DoNotSerialize] public ControlOutput Exit;
         
         protected override void Definition() {
             Window = ValueInput<WindowNames>("Window", default);
-            ControlInput("In", flow => {
+            Enter = ControlInput("In", flow => {
                 string windowName = flow.GetValue<WindowNames>(Window).ToString();
                 WindowBehaviour windowBehaviour = (WindowBehaviour)ZenjectDependenciesProvider.Get(WindowsTypeMapper.GetType(windowName));
                 windowBehaviour.Show();
@@ -22,6 +23,7 @@ namespace UIWorkflow.Nodes {
             });
 
             Exit = ControlOutput("Out");
+            Succession(Enter, Exit);
         }
     }
 }
