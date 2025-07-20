@@ -98,7 +98,7 @@ namespace UIWorkflow.Editor {
         }
 
         private void GenerateWindowsNames() =>
-            WindowEnumGenerator.Generate();
+            WindowNamesGenerator.Generate();
 
         private static bool TryGetActiveFolderPath(out string path) {
             path = string.Empty;

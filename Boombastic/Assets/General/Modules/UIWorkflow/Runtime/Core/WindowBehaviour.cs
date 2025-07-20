@@ -83,8 +83,4 @@ namespace UIWorkflow.Core {
             view.OnClose += viewCloseHandler;
         }
     }
-
-    class MyClass : WindowBehaviour {
-        public MyClass(IWindowFactory windowFactory, IPresenterFactory presenterFactory) : base(windowFactory, presenterFactory) { }
-    }
 }

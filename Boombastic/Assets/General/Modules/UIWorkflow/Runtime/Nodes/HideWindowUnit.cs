@@ -6,18 +6,25 @@ using Unity.VisualScripting;
 
 namespace UIWorkflow.Nodes {
     [PublicAPI]
-    [UnitTitle("Show Window")]
+    [UnitTitle("Hide Window")]
     [UnitCategory("UI Workflow")]
-    public class ShowWindowUnit : Unit {
+    public class HideWindowUnit : Unit {
         [DoNotSerialize] public ValueInput Window;
+        [DoNotSerialize] public ValueInput Close;
         [DoNotSerialize] public ControlOutput Exit;
         
         protected override void Definition() {
             Window = ValueInput<WindowNames>("Window", default);
+            Close = ValueInput<bool>("Close?", default);
             ControlInput("In", flow => {
                 string windowName = flow.GetValue<WindowNames>(Window).ToString();
+                bool toClose = flow.GetValue<bool>(Close);
                 WindowBehaviour windowBehaviour = (WindowBehaviour)ZenjectDependenciesProvider.Get(WindowsTypeMapper.GetType(windowName));
-                windowBehaviour.Show();
+                if (toClose)
+                    windowBehaviour.Close();
+                else
+                    windowBehaviour.Hide();
+                
                 return Exit;
             });
 
