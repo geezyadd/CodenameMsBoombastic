@@ -7,10 +7,11 @@ namespace GameCycle {
     [UnitTitle("Run Project Context")]
     [UnitCategory("Zenject")]
     public class RunProjectContextUnit : Unit {
+        [DoNotSerialize] public ControlInput Enter;
         [DoNotSerialize] public ControlOutput Exit;
 
         protected override void Definition() {
-            ControlInput("In", _ => {
+            Enter = ControlInput("In", _ => {
                 ProjectContext projectContext = ProjectContext.Instance;
                 if (projectContext != null)
                     projectContext.EnsureIsInitialized();
@@ -19,6 +20,7 @@ namespace GameCycle {
             });
 
             Exit = ControlOutput("Out");
+            Succession(Enter, Exit);
         }
     }
 }

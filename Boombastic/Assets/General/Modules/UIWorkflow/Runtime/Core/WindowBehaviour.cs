@@ -17,7 +17,7 @@ namespace UIWorkflow.Core {
         public IReadOnlyList<PresenterBehaviour> Presenters => 
             _presenters;
 
-        internal WindowBehaviour(IWindowFactory windowFactory, IPresenterFactory presenterFactory) {
+        public WindowBehaviour(IWindowFactory windowFactory, IPresenterFactory presenterFactory) {
             _windowFactory = windowFactory;
             _presenterFactory = presenterFactory;
         }

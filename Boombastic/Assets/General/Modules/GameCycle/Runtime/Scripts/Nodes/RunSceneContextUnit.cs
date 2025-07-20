@@ -22,6 +22,7 @@ namespace GameCycle {
             });
 
             Exit = ControlOutput("Out");
+            Succession(Enter, Exit);
         }
     }
 }

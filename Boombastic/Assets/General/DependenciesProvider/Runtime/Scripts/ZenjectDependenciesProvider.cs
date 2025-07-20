@@ -21,6 +21,9 @@ namespace DependenciesProvider {
 
             return default;
         }
+        
+        public static object Get(Type type) =>
+            Dependencies.GetValueOrDefault(type);
 
         public static void Cleanup() =>
             Dependencies.Clear();

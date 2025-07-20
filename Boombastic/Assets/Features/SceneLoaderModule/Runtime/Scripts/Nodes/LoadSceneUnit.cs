@@ -11,13 +11,14 @@ namespace SceneLoaderModule {
     public class LoadSceneUnit : Unit {
         [DoNotSerialize] public ValueInput Scene;
         [DoNotSerialize] public ValueInput LoadSceneMode;
+        [DoNotSerialize] public ControlInput Enter;
         [DoNotSerialize] public ControlOutput Exit;
 
         protected override void Definition() {
             Scene = ValueInput<SceneInBuild>("Scene", default); 
             LoadSceneMode = ValueInput<LoadSceneMode>("LoadMode", default); 
             
-            ControlInput("In", flow => {
+            Enter = ControlInput("In", flow => {
                 SceneInBuild scene = flow.GetValue<SceneInBuild>(Scene);
                 LoadSceneMode loadSceneMode = flow.GetValue<LoadSceneMode>(LoadSceneMode);
                 ISceneSwitchService sceneSwitchService = ZenjectDependenciesProvider.Get<ISceneSwitchService>();
@@ -26,6 +27,7 @@ namespace SceneLoaderModule {
             });
 
             Exit = ControlOutput("Out");
+            Succession(Enter, Exit);
         }
     }
 }

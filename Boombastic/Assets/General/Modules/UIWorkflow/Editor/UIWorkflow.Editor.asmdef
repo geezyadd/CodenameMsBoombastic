@@ -1,0 +1,18 @@
+{
+    "name": "UIWorkflow.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:9577a0c099b710f4a8b13624793b9b09",
+        "GUID:64ad186085db7fe46920a16917122b2d",
+        "GUID:296bef61208702a418126ad2828071dc"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
