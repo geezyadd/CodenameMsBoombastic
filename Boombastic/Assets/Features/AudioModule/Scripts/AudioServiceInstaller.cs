@@ -1,12 +1,9 @@
-using Generations.Data;
-using Plugins.Zenject.Source.Addons.AddressablesConfigurationsLoader;
 using Zenject;
 
 namespace Features.AudioModule.Scripts {
     public class AudioServiceInstaller : Installer<AudioServiceInstaller> {
         public override void InstallBindings()
         {
-            BindConfigurations();
             BindAudioServices();
         }
 
@@ -18,11 +15,5 @@ namespace Features.AudioModule.Scripts {
             Container.BindInterfacesAndSelfTo<AudioVolumeService>()
                 .AsSingle();
         }
-
-        private void BindConfigurations() {
-            Container.BindConfigurationFromAddressables<AudioEventReferenceConfiguration>(
-                AddressableAssets.Configuration.AudioEventReferenceConfiguration).AsSingle();
-        }
-
     }
 }
