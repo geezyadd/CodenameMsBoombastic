@@ -16,7 +16,7 @@ MonoBehaviour:
   m_GUID: e3842a57abbe2994eb047321858ea1b3
   m_SerializeEntries:
   - m_GUID: 84367f9824f7d4c4c9f087b1b7ec330f
-    m_Address: Assets/Scenes/InitialScene.unity
+    m_Address: InitialScene
     m_ReadOnly: 0
     m_SerializedLabels:
     - Scene
